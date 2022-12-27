@@ -9,8 +9,8 @@ pipeline {
       }
       stage('Docker Build') {
          steps {
-            sh(script: 'docker images --all')
-            sh(script: """
+            pwsh(script: 'docker images -a')
+            pwsh(script: """
                cd azure-vote/
                docker images -a
                docker build -t jenkins-pipeline .
@@ -21,7 +21,7 @@ pipeline {
       }
       // stage('Start test app') {
       //    steps {
-      //       sh(script: """
+      //       pwsh(script: """
       //          docker-compose up -d
       //          ./scripts/test_container.ps1
       //       """)
@@ -37,14 +37,14 @@ pipeline {
       // }
       // stage('Run Tests') {
       //    steps {
-      //       sh(script: """
+      //       pwsh(script: """
       //          pytest ./tests/test_sample.py
       //       """)
       //    }
       // }
       // stage('Stop test app') {
       //    steps {
-      //       sh(script: """
+      //       pwsh(script: """
       //          docker-compose down
       //       """)
       //    }
@@ -53,7 +53,7 @@ pipeline {
       //    parallel {
       //       stage('Run Anchore') {
       //          steps {
-      //             sh(script: """
+      //             pwsh(script: """
       //                Write-Output "blackdentech/jenkins-course" > anchore_images
       //             """)
       //             anchore bailOnFail: false, bailOnPluginFail: false, name: 'anchore_images'
@@ -62,7 +62,7 @@ pipeline {
       //       stage('Run Trivy') {
       //          steps {
       //             sleep(time: 30, unit: 'SECONDS')
-      //             // sh(script: """
+      //             // pwsh(script: """
       //             // C:\\Windows\\System32\\wsl.exe -- sudo trivy blackdentech/jenkins-course
       //             // """)
       //          }
