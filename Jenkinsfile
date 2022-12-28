@@ -21,6 +21,7 @@ pipeline {
       }
       stage('Start test app') {
          steps {
+            sh "chmod +x ./jenkins/test_container.sh"
             sh(script: """
                docker-compose up -d
                ./scripts/test_container.sh
