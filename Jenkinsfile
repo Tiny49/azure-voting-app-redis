@@ -39,12 +39,12 @@ pipeline {
 
       stage('Run Tests') {
          steps {
-            withPythonEnv('python3') {
+             withPythonEnv('python3') {
                  sh "pip install pytest"
                  sh(script: """
                  pytest ./tests/test_sample.py
                  """)
-            }
+             }
          }
       }
       stage('Stop test app') {
@@ -127,5 +127,4 @@ pipeline {
       //    }
       // }
    }
-}
 }
