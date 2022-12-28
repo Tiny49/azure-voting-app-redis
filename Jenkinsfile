@@ -36,17 +36,14 @@ pipeline {
             }
          }
       }
-      stage('test PythonEnv') {
-         steps {
-          withPythonEnv('python3') {
-            sh 'pip install pytest'
-         }
-      }
+
       stage('Run Tests') {
          steps {
-            sh(script: """
-               pytest ./tests/test_sample.py
-            """)
+            withPythonEnv('python3') {
+                 sh "pip install pytest"
+                 sh(script: """
+                 pytest ./tests/test_sample.py
+                 """)
          }
       }
       stage('Stop test app') {
