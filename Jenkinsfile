@@ -76,6 +76,7 @@ pipeline {
       }
       stage('Run Anchore') {
          steps{
+            echo "tiny49/jenkins-course01" > anchore_images
             anchore name: 'anchore_images'
          }
       }
