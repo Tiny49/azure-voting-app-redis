@@ -88,8 +88,6 @@ pipeline {
                   // """)
                }
             }
-         }
-      }
       // stage('Deploy to QA') {
       //    environment {
       //       ENVIRONMENT = 'qa'
